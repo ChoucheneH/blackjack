@@ -1,0 +1,144 @@
+/** GENERAL **/
+    html {
+        height: 100%;
+    }
+    body {
+        min-height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .orange{
+        color: orangered;
+    }
+    .centered{
+        text-align:center;
+    }
+    .border-dotted{
+        border: 1px dotted black;
+    }
+    .mainContent{
+        background-color: green;
+    }
+    .bankContent h2{
+        color: white;
+        text-align:center;
+    }
+    
+    .bankContent, playerContent{
+        text-align: center;
+    }
+    .card-added{
+        height: 120px;
+        width: 75px;
+        float:left;
+        text-align:center;
+        background-size: 75px 120px;
+        border:2px solid black;
+        border-radius: 3px;
+        
+    }
+    #bankCards, #playerCards{
+        display: inline-block;
+        margin: 0px;
+    }
+    .boardControls{
+        text-align: center;
+        display:block;
+    }
+    .boardControls button{
+        width:100%;
+        height: 50px;
+        margin: 16px;
+    }
+    #inputBeginMiseSlider .slider-selection, .slider-tick.in-selection {
+        background: #337ab7;
+        background-image: linear-gradient(to bottom,#337ab7 0,#337ab7 100%) !important;
+    }
+    .tooltip{
+        font-size:20px;
+    }
+    .slider .tooltip.top{
+        margin-top: -45px !important;
+    }
+    .gameState{
+        background-color: black;
+    }
+    .gameState h3{
+        color: white;
+    }
+    .gameState i{
+        vertical-align: middle;
+    }
+    .gameState .fa-thumbs-up{
+        color: green;
+    }
+    .gameState .fa-thumbs-down{
+        color: red;
+    }
+    .gameState .fa-hand-paper-o{
+        color: orange;
+    }
+    .myGame {
+        background-color: darkslategrey;
+    }
+    .disabled{
+    cursor : default !important;
+    }
+    #score-current-player , #score-current-bank{
+        font-size: 50px;
+    }
+    .hidden-div{
+        visibility: hidden;
+    }
+
+    /** MAIN CONTENT **/
+    .notifyjs-lose-base {
+      white-space: nowrap;
+      background-color: #F80606;
+      padding: 10px;
+      
+    }
+    .notifyjs-lose-base span{
+        font-size: 18px;
+        color: white;
+    }
+    .notifyjs-dual-base {
+      white-space: nowrap;
+      background-color: #FF7F00;
+      padding: 10px;
+      
+    }
+    .notifyjs-dual-base span{
+        font-size: 18px;
+        color: white;
+    }
+    .notifyjs-win-base {
+      white-space: nowrap;
+      background-color: #58D115;
+      padding: 10px;
+      
+    }
+    .notifyjs-win-base span{
+        font-size: 18px;
+        color: white;
+    }
+    .notifyjs-abandon-base {
+      white-space: nowrap;
+      background-color: #DF4040;
+      padding: 10px;
+      
+    }
+    .notifyjs-abandon-base span{
+        font-size: 18px;
+        color: white;
+    }
+    .notifyjs-help-base {
+      white-space: nowrap;
+      background-color: #07F5D5;
+      padding: 10px;
+      
+    }
+    .notifyjs-help-base span{
+        font-size: 18px;
+        color: white;
+    }

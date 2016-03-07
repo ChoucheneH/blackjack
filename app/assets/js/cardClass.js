@@ -80,16 +80,33 @@ cardClass.getTotal = function(arr){
 			//console.log("value : "+ value+' -  index '+index);
 			var val = (value.split('-'))[1];
 			if(isNaN(val)){
-				if(val.indexOf("A") > -1)
+				if(val.indexOf("A") > -1){
 					total+=11;
-				else
+				}
+				else{
 					total+=10;
+				}
 			}			
 			else
 				total += parseInt(val);
 		});
+	for (var i = 0; i < this.getNumberOfAs(arr); i++) {
+		if(total > 21)
+			total-=10;
+	}
 	return total;
 }
+
+cardClass.getNumberOfAs = function (arr) {
+	var count = 0;
+	if(arr.length > 0){
+		arr.forEach(function(v,i){
+			if(v.indexOf("A") > -1)
+				count++;
+		});
+	}
+	return count;
+};
 
 cardClass.reduceMoneyPlayer = function(betValue){
 	this.moneyPlayer-=( (this.moneyPlayer - betValue) >= 0 ) ? betValue : 0;

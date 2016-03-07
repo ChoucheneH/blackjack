@@ -9,6 +9,13 @@ $(document).ready(function(){
 
 function hold(){
 	if(isDisabled('btn-hold')) return;
+	do{
+		getCard("bank");
+	}while(getTotal("bank") < 17)
+
+	arreterJeux("bank");
+
+
 	console.log('hold');
 }
 
@@ -76,17 +83,10 @@ function getCard(who){
 		case "player":
 		addCardDiv("playerCards",cardName);
 		displayTotal("score-current-player",getTotal(who));
-
-		//cardsJoueur.push(cardName) ;
-		//CalculeTotalCard() ;
-  		//setScoreDiv("score-current-player",totale);
 			break;
 		case "bank":
 		addCardDiv("bankCards",cardName);
 		displayTotal("score-current-bank",getTotal(who));
-		//cardBanque.push(cardName) ;
-		//CalculeTotalCardBankcards() ;
-  		//setScoreDiv("score-current-bank",totaleBanque)
 				break;
 		default:
 			break;
@@ -178,27 +178,20 @@ function arreterJeux(who){
   	var etat = getStatusGame("LOSE");
 
 	switch(who){
-		/*
 		case "bank":
-			if(totaleBanque > 21){
-				message+=" inférieur à 21 , et la banque supérieur à 21 , WIN !! ";
-				etat = 2;
-			}else if (totaleBanque == totale){
-				message+=" égale à celui de la banque , DUAL !! ";
-				etat = 1;
-			}else if (totaleBanque > totale){
-				message+=" "+totale+" , et la banque est "+totaleBanque+" , PERDU !! ";
-				etat = 0;
-			}else if (totaleBanque < totale){
-				message+=" "+totale+" , et la banque est "+totaleBanque+" , WIN !! ";
-				etat = 1;
+			if( (getTotal("bank") > 21) || ( getTotal("bank") < getTotal("player") ) ){
+				message+=" "+getTotal('player')+" , et la banque est " +getTotal('bank')+ " , WIN !! ";
+				etat = getStatusGame("WIN");
+			}else if (getTotal("bank") == getTotal("player")){
+				message+=" égale à celui de la banque ( "+getTotal('bank')+ " ) , DUAL !! ";
+				etat = getStatusGame("DUAL");
+			}else if (getTotal("bank") > getTotal("player")){
+				message+=" "+getTotal('player')+" , et la banque est " +getTotal('bank')+ " , PERDU !! ";
 			}	    
-			else 
-			{
-				message += " terminé vous avez 21";
-				resetGame(0);
+			else{
+				console.log(" result iconnu : score bank : "+getTotal("bank")+" score player : "+getTotal("player"));
 			}
-		break;*/
+		break;
 
 		case "player":
 			if(getTotal("player") > 21)
@@ -210,10 +203,8 @@ function arreterJeux(who){
 			//resetGame(1);
 		break;
 	}
-
-  	if( message.length < 20 && getTotal("bank") < 17 ) console.log(totaleBanque + "  " + totale);
-  	
-  	displayEtat(etat,message);
+	
+	displayEtat(etat,message);
 	
 	
 }

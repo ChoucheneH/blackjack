@@ -1,6 +1,7 @@
 <div class="col-md-3">
     <button id="btn-hold" class="btn btn-primary disabled" onclick="hold();"  >FIN DU TOUR</button>
     <button id="btn-abandon" class="btn btn-warning disabled" onclick="reset();" >ABANDON</button>
+    <button id="btn-doubler" class="btn btn-warning disabled" onclick="doubler();" >DOUBLER</button>
     <button  id="btn-add-card" class="btn btn-info disabled" onclick="addCard();">CARTE SUPPLEMENTAIRE</button>
 </div>
 <div class="col-md-6">

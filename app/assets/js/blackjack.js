@@ -9,25 +9,25 @@ $(document).ready(function(){
 
 function hold(){
 	if(isDisabled('btn-hold')) return;
-	do{
-		getCard("bank");
-	}while(getTotal("bank") < 17)
-
-	arreterJeux("bank");
-
+	giveBank();	
 
 	console.log('hold');
 }
 
+
 function addCard(){
 	if(isDisabled('btn-add-card')) return;
-	if(getTotal("player") < 21)
+	if(getTotal("player") < 21){
 		getCard("player");
+	}
 
-	if(getTotal("player") == 21)
+	if(getTotal("player") == 21){
 		desactivateButtons("btn-add-card");
-	else if (getTotal("player") > 21)
+	}
+	else if (getTotal("player") > 21){
 		arreterJeux("player");
+	}
+	desactivateButtons("btn-abandon","btn-doubler")
 	
 	console.log('addCard');
 
@@ -73,6 +73,29 @@ function exit(){
 
 }
 
+function doubler() {
+	if(hasMoney( getBet() ) ){
+		$("#current-bet").text( (getBet( setBet(getBet() * 2 ) ) ).toString());
+		$("#wallet").text(getMoney().toString());
+		getCard("player");
+		if(getTotal("player")>21){
+			arreterJeux("player");
+		}else{
+			giveBank();
+		}
+		
+		console.log('doubler');
+	}
+}
+
+function giveBank() {
+	do{
+		getCard("bank");
+	}while(getTotal("bank") < 17)
+
+	arreterJeux("bank");
+}
+
 function isDisabled(id){
 	return ($('#'+id).hasClass("disabled"))?true:false;
 }
@@ -93,7 +116,7 @@ function getCard(who){
 
 	}
 	sleepFor(0);
-	activateButtons("btn-hold","btn-add-card","btn-abandon");
+	activateButtons("btn-hold","btn-add-card","btn-abandon","btn-doubler");
 	desactivateButtons("btn-bet");
 }
 
@@ -136,8 +159,9 @@ function hasMoney(value){
 	if(cardClass.hasMoney(value)){
 		cardClass.reduceMoneyPlayer(value);
 		return true;
-	}else
+	}else{
 		return false;
+	}
 }
 
 function getMoney(){
@@ -244,7 +268,7 @@ function resetStatusButtons() {
 	//enable btn-next
 	activateButtons("btn-next");
 	//disable btn-[hold|reset|add]
-	desactivateButtons("btn-hold","btn-abandon","btn-add-card");
+	desactivateButtons("btn-hold","btn-abandon","btn-add-card","btn-doubler");
 }
 
 //---------------
